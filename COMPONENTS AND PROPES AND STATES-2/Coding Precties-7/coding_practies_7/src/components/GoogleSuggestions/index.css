@@ -1,0 +1,5 @@
+.suggestion-item {
+    list-style-type: none;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
