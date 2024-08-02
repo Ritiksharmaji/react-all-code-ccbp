@@ -8,14 +8,12 @@ const AppItem = (props)=>{
 
     return(
         <>
-        <li>
-            <div className="app-list-contianr">
+        <li className="app-item">
                 <img src={imageUrl}
-                    className="image-app" alt="imag"/>
-
+                    className="app-image"  alt="imag"/>
                     {/* <h1 className="heading-app">{appName}</h1> */}
-                    {/* <p className="category-app">{category}</p> */}
-            </div>
+                    <p className="app-name">{appName}</p>
+          
         </li>
         </>
     )

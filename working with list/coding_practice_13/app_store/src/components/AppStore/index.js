@@ -300,18 +300,18 @@ const tabsList = [
 
     state = {
         tabid:tabsList[0].tabId,
-        appID:appsList[0].appId
+        appID:appsList[0].appId,
+        searchInput:''
     }
 
 
-    changeAppList=(event)=>{
 
-      const{tabid, appID} = this.state
 
-      const filterAppSearch = appsList.includes(earchapp=>(
-        earchapp.category === event.target.value
-      ))
-      return filterAppSearch;
+    updateSearchInput = (event)=>{
+      this.setState({
+        searchInput:event.target.value
+      })
+      console.log(this.state.searchInput)
     }
 
     updateTabId=(id)=>{
@@ -323,10 +323,10 @@ const tabsList = [
     }
 
     updateAppsState = ()=>{
-        const{tabid} = this.state;
+        const{tabid,searchInput} = this.state;
         const filterapps = appsList.filter(eachapp=>(
-           
-            eachapp.category === tabid
+            eachapp.category === tabid &&
+            eachapp.appName.toLowerCase().includes(searchInput.toLowerCase())
     ))
     return filterapps
     }
@@ -340,44 +340,53 @@ const tabsList = [
 
         return(
             <>
-            <div className='app-storage-container'>
-                <h1 className='heading-app-container'>
+            <div className='app-container'>
+              <div className='app-store '>
+              <h1 className='heading'>
                     App Store
                 </h1>
 
-                <div className='input-search-container'>
-                    <input type='search' className='input-fill' onChange={this.changeAppList}/>
-                    <span></span>
+                <div className='search-input-container '>
+                    <input type='search' className="search-input" onChange={this.updateSearchInput}/>
+                   
+                      <img src='https://assets.ccbp.in/frontend/react-js/app-store/app-store-search-img.png'
+                      alt='search icon' 
+                      className='search-icon'/>
+                    
                 </div>
 
                 <div className='tab-container'>
                     {/* this container will store all the tablist */}
-                    <ul >
-                        <div className='unorder-Tab-list'>
+                    <ul className='tabs-list'>
+                        
                             {tabsList.map(eachTab=>(
                                 <TabItem key={eachTab.tabId}
                                 eachTab={eachTab}
                                 updateIdMethod = {this.updateTabId}
+                                // to check the tabid is active or not
+                                IsActive = {tabid === eachTab.tabId}
                                 />
                             ))}
-                        </div>
+                        
                         
                     </ul>
                 </div>
 
                 <div className='apps-apps-container'>
                     {/* this container will store all the app list  */}
-                    <ul>
-                        <div className='app-unorder-list-container'>
+                    <ul className='apps-list'>
+                        
                             {filterapp.map(eachapp=>(
                                 <AppItem key={eachapp.appId}
                                     appsobject = {eachapp}
 
                                 />
                             ))}
-                        </div>
+                        
                     </ul>
                 </div>
+              </div>
+                
             </div>
             </>
         )
