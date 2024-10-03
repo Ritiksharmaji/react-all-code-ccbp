@@ -20,6 +20,6 @@ const denominationsList = [
   },
 ];
 
-const App = () => <CashWithdrawal denominationsList={denominationsList} />;
+const CashApp = () => <CashWithdrawal denominationsList={denominationsList} />;
 
-export default App;
+export default CashApp;

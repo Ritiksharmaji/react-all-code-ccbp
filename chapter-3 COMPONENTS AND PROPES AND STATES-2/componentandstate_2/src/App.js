@@ -44,8 +44,8 @@ class App extends Component {
     this.setState({
       searchInput: event.target.value,
     })
-
   }
+
   deleteUser = (number) => {
     console.log("user deleted with id:" + number)
     // to get the user which don't match the id 
@@ -72,12 +72,10 @@ class App extends Component {
       const detils = eachuser.name.includes(searchInput)
       return detils;
     })
-
+    console.log(searchUser);
 
     return (
       <div className="app-container">
-
-
         <h1 className="title">Users List</h1>
         <input type="search" onChange={this.onchangeSearch} value={searchInput} />
         <ul className="list-container">

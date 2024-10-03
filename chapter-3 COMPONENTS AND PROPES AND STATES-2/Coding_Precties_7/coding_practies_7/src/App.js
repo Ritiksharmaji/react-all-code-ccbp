@@ -1,5 +1,5 @@
 import GoogleSuggestions from './components/GoogleSuggestions'
-
+import CashWithdrawal from './components/CashWithdrawal'
 import './App.css'
 
 const suggestionsList = [
@@ -12,5 +12,6 @@ const suggestionsList = [
 ]
 
 const App = () => <GoogleSuggestions suggestionsList={suggestionsList} />
+
 
 export default App
