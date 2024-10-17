@@ -1,0 +1,10 @@
+.profile-cards{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.profile-image{
+    width:250px;
+    height:250px;
+}
