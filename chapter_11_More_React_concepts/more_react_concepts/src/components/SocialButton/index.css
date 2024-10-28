@@ -1,0 +1,17 @@
+.social-button {
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 14px;
+    color: #ffffff;
+    margin-right: 6px;
+    padding: 10px 8px 10px 8px;
+    background-color: #0b69ff;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
