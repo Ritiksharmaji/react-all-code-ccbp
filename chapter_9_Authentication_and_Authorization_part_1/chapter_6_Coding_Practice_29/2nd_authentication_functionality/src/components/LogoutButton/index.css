@@ -1,0 +1,8 @@
+/* index.css */
+.logout-mobile-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #f00;
+  color: black
+}
