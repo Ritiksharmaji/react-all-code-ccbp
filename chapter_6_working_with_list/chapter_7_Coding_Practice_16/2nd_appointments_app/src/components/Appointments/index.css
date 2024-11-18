@@ -1,0 +1,40 @@
+
+.appointments-container{
+    height: 100vh;
+    width: 100vw;
+    background-color: aquamarine;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem;
+  
+}
+
+.appointments-container .card{
+    background-color: white;
+    width: 80vw;
+    height: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.form-container-card{
+    display: flex;
+    justify-content: space-between;
+
+}
+.input-fileds-card{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.unprder-list-appointmentitem{
+    display: flex;
+    flex-wrap: wrap;
+}
