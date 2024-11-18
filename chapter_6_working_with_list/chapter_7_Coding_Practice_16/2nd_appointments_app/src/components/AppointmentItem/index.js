@@ -1,23 +1,32 @@
-import React from 'react'
+import './index.css'
 
-function AppointmentItem({key,name,date,isLiked}) {
+const AppointmentIem = props => {
+  const {appointmentDetails, toggleIsStarred} = props
+  const {id, title, date, isStarred} = appointmentDetails
+  const starImgUrl = isStarred
+    ? 'https://assets.ccbp.in/frontend/react-js/appointments-app/filled-star-img.png'
+    : 'https://assets.ccbp.in/frontend/react-js/appointments-app/star-img.png'
 
-    const likeImageUrl = isLiked
-    ? 'https://assets.ccbp.in/frontend/react-js/comments-app/liked-img.png'
-    : 'https://assets.ccbp.in/frontend/react-js/comments-app/like-img.png'
+  const onClickStar = () => {
+    toggleIsStarred(id)
+  }
 
-    
   return (
-    <div>
-        <h1 className='heading'>
-            {name}
-        </h1>
-        <img src={likeImageUrl} alt="like" className="like-image" />
-        <p className='paragraph'>
-            {date}
-        </p>
-    </div>
+    <li className="appointment-item">
+      <div className="header-container">
+        <p className="title">{title}</p>
+        <button
+          type="button"
+          data-testid="star"
+          className="star-button"
+          onClick={onClickStar}
+        >
+          <img src={starImgUrl} className="star" alt="star" />
+        </button>
+      </div>
+      <p className="date">Date: {date}</p>
+    </li>
   )
 }
 
-export default AppointmentItem
+export default AppointmentIem
