@@ -1,11 +1,19 @@
+
+import { useHistory } from 'react-router-dom/cjs/react-router-dom'
 import './index.css'
 
 const ProductCard = props => {
   const {productData} = props
-  const {title, brand, imageUrl, rating, price} = productData
+  const {title, brand, imageUrl, rating, price, id} = productData
+  const history = useHistory();
+
+  const changedir = ()=>{
+    history.push(`/products/${id}`); // Navigate programmatically
+    console.log(productData)
+  }
 
   return (
-    <li className="product-item">
+    <li className="product-item" onClick={changedir}>
       <img src={imageUrl} alt="product" className="thumbnail" />
       <h1 className="title">{title}</h1>
       <p className="brand">by {brand}</p>
