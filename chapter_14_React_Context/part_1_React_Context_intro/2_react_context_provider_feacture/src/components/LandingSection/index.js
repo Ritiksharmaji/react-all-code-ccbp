@@ -21,6 +21,7 @@ const landingSectionContent = {
 }
 
 const LandingSection = () => {
+  
   const getLandingSectionData = activeLanguage => {
     switch (activeLanguage) {
       case 'EN':
