@@ -1,3 +1,4 @@
+import LanguageContext from '../../context/LanguageContext'
 import './index.css'
 
 const newWaysToConnectContent = {
@@ -18,7 +19,9 @@ const newWaysToConnectContent = {
   },
 }
 
-const NewWaysToConnect = props => {
+// const NewWaysToConnect = props => {
+    const NewWaysToConnect = () => {
+
   const getNewWaysToConnectData = activeLanguage => {
     switch (activeLanguage) {
       case 'EN':
@@ -31,15 +34,25 @@ const NewWaysToConnect = props => {
         return null
     }
   }
-  const {activeLanguage} = props
-  const {heading, description} = getNewWaysToConnectData(activeLanguage)
+//   const {activeLanguage} = props
+//   const {heading, description} = getNewWaysToConnectData(activeLanguage)
 
-  return (
-    <div className="new-ways-to-connect-container">
-      <h1 className="new-ways-to-content-heading">{heading}</h1>
-      <p className="new-ways-to-content-description">{description}</p>
-    </div>
-  )
+return(
+    <LanguageContext.Consumer>
+    {value=>{
+        const {activeLanguage} = value
+        const {heading, description} = getNewWaysToConnectData(activeLanguage)
+        return (
+            <div className="new-ways-to-connect-container">
+              <h1 className="new-ways-to-content-heading">{heading}</h1>
+              <p className="new-ways-to-content-description">{description}</p>
+            </div>
+          )
+
+    }}
+</LanguageContext.Consumer>
+)
+  
 }
 
 export default NewWaysToConnect

@@ -1,3 +1,4 @@
+import LanguageContext from '../../context/LanguageContext'
 import './index.css'
 
 const playtimeContent = {
@@ -18,7 +19,8 @@ const playtimeContent = {
   },
 }
 
-const Playtime = props => {
+// const Playtime = props => {
+    const Playtime = () => {
   const getPlaytimeData = activeLanguage => {
     switch (activeLanguage) {
       case 'EN':
@@ -31,22 +33,33 @@ const Playtime = props => {
         return null
     }
   }
-  const {activeLanguage} = props
-  const {heading, description} = getPlaytimeData(activeLanguage)
+//   const {activeLanguage} = props
+//   const {heading, description} = getPlaytimeData(activeLanguage)
 
-  return (
-    <div className="playtime-container">
-      <h1 className="playtime-heading">{heading}</h1>
-      <div className="playtime-description-container">
-        <p className="playtime-description">{description}</p>
-        <img
-          className="playtime-games-image"
-          src="https://assets.ccbp.in/frontend/react-js/gaming-pad-img.png"
-          alt="gaming pad"
-        />
-      </div>
-    </div>
-  )
+return(
+    <LanguageContext.Consumer>
+    {value=>{
+        const {activeLanguage}= value;
+        getPlaytimeData(activeLanguage)
+        const {heading, description} = getPlaytimeData(activeLanguage)
+        return (
+            <div className="playtime-container">
+              <h1 className="playtime-heading">{heading}</h1>
+              <div className="playtime-description-container">
+                <p className="playtime-description">{description}</p>
+                <img
+                  className="playtime-games-image"
+                  src="https://assets.ccbp.in/frontend/react-js/gaming-pad-img.png"
+                  alt="gaming pad"
+                />
+              </div>
+            </div>
+          )
+    }}
+</LanguageContext.Consumer>
+
+)
+ 
 }
 
 export default Playtime
