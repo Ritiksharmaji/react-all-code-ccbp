@@ -7,20 +7,26 @@ const CartSummary = () => (
     {value => {
       const {cartList} = value
       let total = 0
-      cartList.forEach(eachItem => {
-        total += eachItem.price * eachItem.quantity
+      cartList.forEach(eachCartItem => {
+        total += eachCartItem.price * eachCartItem.quantity
       })
+
       return (
-        <div className="cartSummary-container">
-          <div className="total-container">
-            <h1 className="order-total">Order Total:</h1>
-            <h1 className="total">Rs {total}/-</h1>
+        <>
+          <div className="cart-summary-container">
+            <h1 className="order-total-value">
+              <span className="order-total-label">Order Total:</span> Rs {total}
+              /-
+            </h1>
+            <p className="total-items">{cartList.length} Items in cart</p>
+            <button type="button" className="checkout-button d-sm-none">
+              Checkout
+            </button>
           </div>
-          <p className="items-count">{cartList.length} items in cart</p>
-          <button type="button" className="checkout-button">
+          <button type="button" className="checkout-button d-lg-none">
             Checkout
           </button>
-        </div>
+        </>
       )
     }}
   </CartContext.Consumer>

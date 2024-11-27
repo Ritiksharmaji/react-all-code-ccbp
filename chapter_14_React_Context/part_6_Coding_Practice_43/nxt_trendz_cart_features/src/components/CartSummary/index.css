@@ -1,52 +1,71 @@
-.cartSummary-container {
-    margin-bottom: 80px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+.cart-summary-container {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+}
+
+.order-total-value {
+  color: #171f46;
+  font-family: 'Roboto';
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+
+@media screen and (min-width: 768px) {
+  .order-total-value {
+    font-size: 32px;
   }
-  .total-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+}
+
+.order-total-label {
+  color: #616e7c;
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 768px) {
+  .order-total-label {
+    font-size: 24px;
   }
-  .order-total {
-    font-size: 18px;
-    font-weight: 600;
-    color: #616e7c;
-    font-family: 'Roboto';
+}
+
+.total-items {
+  color: #616e7c;
+  font-family: 'Roboto';
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+@media screen and (min-width: 768px) {
+  .total-items {
+    font-size: 16px;
   }
-  .total {
-    font-size: 20px;
-    padding-left: 8px;
-    font-family: 'Roboto';
+}
+
+.checkout-button {
+  background-color: #0b69ff;
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 12px;
+  border: none;
+  border-radius: 4px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  outline: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .d-sm-none {
+    display: none;
   }
-  .items-count {
-    font-family: 'Roboto';
-    font-size: 15px;
-    color: #616e7c;
-    margin-top: 0px;
+}
+
+@media screen and (min-width: 768px) {
+  .d-lg-none {
+    display: none;
   }
-  .checkout-button {
-    height: 30px;
-    width: 190px;
-    background-color: #0b69ff;
-    color: #ffffff;
-    border-width: 0px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 13px;
-  }
-  @media screen and (max-width: 768px) {
-    .order-total {
-      font-size: 13px;
-    }
-    .items-count {
-      font-size: 15px;
-    }
-    .total {
-      font-size: 15px;
-    }
-    .checkout-button {
-      width: 140px;
-    }
-  }
+}
