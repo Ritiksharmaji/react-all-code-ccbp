@@ -9,7 +9,6 @@ const ProductsHeader = props => {
   }
 
   const {sortbyOptions, activeOptionId} = props
-
   return (
     <div className="products-header">
       <h1 className="products-list-heading">All Products</h1>
