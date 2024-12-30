@@ -1,30 +1,51 @@
+// import Slider from 'react-slick'
+
+// import PlanetItem from '../PlanetItem'
+
+// import './index.css'
+
+// const PlanetsSlider = props => {
+//   const {planetsList} = props
+
+//   return (
+//     <div className="planets-app-container" data-testid="planets">
+//       <h1 className="heading">PLANETS</h1>
+//       <Slider>
+//         {planetsList.map(eachPlanet => (
+//           <PlanetItem key={eachPlanet.id} planetDetails={eachPlanet} />
+//         ))}
+//       </Slider>
+//     </div>
+//   )
+// }
+
+// export default PlanetsSlider
+
+
 import React from 'react';
-import './index.css';
 import Slider from 'react-slick';
+import PlanetItem from '../PlanetItem';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import './index.css';
 
-const PlanetsSlider = ({ planetsList }) => {
+const PlanetsSlider = props => {
+  const { planetsList } = props;
+
   const settings = {
     dots: true,
+    infinite: true,
+    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
 
   return (
-      <div className="slider-container">
-          <h1>Planntes</h1>
+    <div className="planets-app-container" data-testid="planets">
+      <h1 className="heading">PLANETS</h1>
       <Slider {...settings}>
-        {planetsList.map((item) => (
-          <div key={item.id}>
-            <div>
-              <img src={item.imageUrl} alt={item.name} className="image" />
-            </div>
-            <div className="details">
-              <h1>{item.name}</h1>
-              <p>{item.description}</p>
-            </div>
-          </div>
+        {planetsList.map(eachPlanet => (
+          <PlanetItem key={eachPlanet.id} planetDetails={eachPlanet} />
         ))}
       </Slider>
     </div>
@@ -32,3 +53,4 @@ const PlanetsSlider = ({ planetsList }) => {
 };
 
 export default PlanetsSlider;
+
