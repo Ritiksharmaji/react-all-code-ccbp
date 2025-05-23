@@ -1,0 +1,34 @@
+
+.calculater-container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(45deg, #1d976c, #93f9b9); 
+}
+
+.card-container-calculater{
+    display: flex;
+    margin-left: 30px;
+}
+
+.image-calclater{
+    width:300px;
+    height: 250px;
+}
+.input-filed{
+    outline: none;
+}
+.submit-button-calculater-container{
+   width:180px;
+   height: 30px;
+   border-radius: 10px;
+   background-color: white;
+   display: flex;
+   align-items: center;
+   margin-top: 20px;
+
+}
+.paragraph-total-phase{
+    color:#1d976c
+}

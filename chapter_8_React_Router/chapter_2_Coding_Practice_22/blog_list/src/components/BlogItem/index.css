@@ -1,0 +1,11 @@
+
+.blog-list-contianer{
+    color: black;
+    display: flex; 
+    flex-direction: column;
+
+}
+.name-date-contianer{
+    display: flex;
+    justify-content: space-between;
+}

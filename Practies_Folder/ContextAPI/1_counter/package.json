@@ -1,11 +1,19 @@
 {
+<<<<<<<< HEAD:Practies_Folder/ContextAPI/1_counter/package.json
   "name": "counter_app_using_contextapi",
+========
+  "name": "todolist",
+>>>>>>>> 58d2c159e2569e2f42de74936c172e19af01d880:Practies_Folder/todolist/package.json
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
+<<<<<<<< HEAD:Practies_Folder/ContextAPI/1_counter/package.json
     "@testing-library/react": "^16.3.0",
+========
+    "@testing-library/react": "^16.2.0",
+>>>>>>>> 58d2c159e2569e2f42de74936c172e19af01d880:Practies_Folder/todolist/package.json
     "@testing-library/user-event": "^13.5.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

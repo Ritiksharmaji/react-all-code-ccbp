@@ -1,0 +1,38 @@
+/* Write your CSS here */
+
+.fruits-counter-container {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: yellow;
+  background-size: cover;
+  padding: 20px;
+}
+
+.card-fruits-counter-container {
+  min-width: 80vw;
+  min-height: 80vh;
+  background-color: white;
+  background-size: cover;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card-container-fruit {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.friut-fruit-image {
+  width: 100px;
+  height: 100px;
+}
+
+.fruit-card-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+}

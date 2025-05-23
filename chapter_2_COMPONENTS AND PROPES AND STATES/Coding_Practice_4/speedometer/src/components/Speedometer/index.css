@@ -1,0 +1,26 @@
+/* Write your CSS here */
+.speedometer-image {
+  height: 300px;
+  width: 400px;
+}
+
+.speed-container {
+  background-color: black;
+  height: 100vh;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.speed-heading {
+  font-style: italic;
+}
+
+.button-container {
+  padding: 15px;
+}
+
+.speed-button {
+  margin-right: 12px;
+}
