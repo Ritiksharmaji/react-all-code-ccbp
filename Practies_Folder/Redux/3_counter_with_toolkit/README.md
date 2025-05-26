@@ -74,3 +74,105 @@ export default counterSlice.reducer;
 So yes, **Redux Toolkit saves time** by eliminating manual action and type definitions 🎉
 
 Let me know if you'd like to compare it side-by-side with plain Redux in a sample app!
+
+### -------------- difference between store by using redux and store using redux-toolket
+
+
+Great question! Let's break down the **difference between `configureStore` from Redux Toolkit** and the classic `createStore` from Redux.
+
+---
+
+## 🆚 `configureStore` (Redux Toolkit) vs `createStore` (Classic Redux)
+
+### ✅ 1. **Boilerplate Reduction**
+
+* **`configureStore`**: Comes with a lot of sensible defaults and eliminates boilerplate.
+* **`createStore`**: Requires manual setup for middleware like `redux-thunk`, devtools, etc.
+
+### ✅ 2. **Default Middleware**
+
+* **`configureStore`**: Automatically includes middleware like `redux-thunk` and devtools.
+* **`createStore`**: You must manually apply middleware using `applyMiddleware()`.
+
+### ✅ 3. **Redux DevTools Integration**
+
+* **`configureStore`**: Automatically sets up Redux DevTools.
+* **`createStore`**: You must manually integrate Redux DevTools with setup like:
+
+```js
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+```
+
+### ✅ 4. **Combining Reducers**
+
+* **`configureStore`**: Encourages object-based reducer structure (e.g., `reducer: { counter: counterReducer }`)
+* **`createStore`**: Typically uses `combineReducers()` manually:
+
+```js
+const rootReducer = combineReducers({ counter: counterReducer });
+const store = createStore(rootReducer);
+```
+
+---
+
+## 🧠 Real Code Comparison
+
+### 🔸 Redux Toolkit (`configureStore`)
+
+```js
+// store.js
+import { configureStore } from '@reduxjs/toolkit';
+import counterReducer from '../features/counter/counterSlice';
+
+export const store = configureStore({
+  reducer: {
+    counter: counterReducer,
+  },
+});
+```
+
+> ✅ Easier to read, maintain, and scale with multiple slices
+> ✅ Redux DevTools and thunk are already configured
+> ✅ Can easily add multiple features using slices
+
+---
+
+### 🔹 Classic Redux (`createStore`)
+
+```js
+// store.js
+import { createStore } from 'redux';
+import { counterReducer } from './reducer';
+
+const store = createStore(counterReducer);
+
+export default store;
+```
+
+> ❌ More boilerplate
+> ❌ Middleware and devtools setup needs to be done manually
+> ❌ Not ideal for large-scale apps without helper libraries
+
+---
+
+## 📝 Summary
+
+| Feature                   | `configureStore` (RTK) | `createStore` (Redux) |
+| ------------------------- | ---------------------- | --------------------- |
+| Boilerplate               | ✅ Minimal              | ❌ Verbose             |
+| DevTools setup            | ✅ Built-in             | ❌ Manual              |
+| Middleware (e.g., Thunk)  | ✅ Included by default  | ❌ Manual              |
+| Code readability          | ✅ Cleaner with slices  | ❌ Messier             |
+| Recommended by Redux team | ✅ Yes                  | ❌ No                  |
+
+---
+
+### ✅ **Conclusion**:
+
+> **`configureStore` from Redux Toolkit** is the modern and **recommended** way to use Redux.
+> It's simpler, more powerful, and better for **real-world apps**.
+
+Would you like a complete side-by-side example app using both styles for comparison?

@@ -7,6 +7,7 @@ const initialState = {
 const counterSlice = createSlice({
   name: 'counter',
   initialState,
+  // Reducers are functions that handle actions and update the state
   reducers: {
     increment: (state) => {
       state.value += 1;
