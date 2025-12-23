@@ -1,31 +1,16 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useReducer, useState } from "react";
+import { todoReducer } from "./todoReducer";
 
-const TodoContext = createContext();
-
-export const useTodos = () => useContext(TodoContext);
+export const TodoContext = createContext();
 
 export const TodoProvider = ({ children }) => {
-  const [todos, setTodos] = useState([]);
-
-  const addTodo = (text) => {
-    const newTodo = { id: Date.now(), text, completed: false };
-    setTodos((prev) => [newTodo, ...prev]);
-  };
-
-  const toggleTodo = (id) => {
-    setTodos((prev) =>
-      prev.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
-    );
-  };
-
-  const deleteTodo = (id) => {
-    setTodos((prev) => prev.filter((todo) => todo.id !== id));
-  };
+  // Use useReducer to manage todos state with todoReducer where actions will be dispatched to update the state
+  // Initial state is an empty array
+  const [todos, dispatch] = useReducer(todoReducer, []);
+  const [editTodo, setEditTodo] = useState(null);
 
   return (
-    <TodoContext.Provider value={{ todos, addTodo, toggleTodo, deleteTodo }}>
+    <TodoContext.Provider value={{ todos, dispatch, editTodo, setEditTodo }}>
       {children}
     </TodoContext.Provider>
   );
