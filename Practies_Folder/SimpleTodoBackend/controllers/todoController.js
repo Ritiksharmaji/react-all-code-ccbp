@@ -28,11 +28,43 @@
 //   res.json({ message: "Todo deleted" });
 // };
 
+
+import { formatTodo } from "../helper/helper.js";
 import Todo from "../models/Todo.js";
 
+// export const getTodos = async (req, res) => {
+//   const todos = await Todo.find({ user: req.user });
+//   res.json(todos);
+// };
+
+// export const addTodo = async (req, res) => {
+//   const todo = await Todo.create({
+//     text: req.body.text,
+//     completed: false,
+//     user: req.user,
+//   });
+//   res.json(todo);
+// };
+
+// export const updateTodo = async (req, res) => {
+//   const todo = await Todo.findOneAndUpdate(
+//     { _id: req.params.id, user: req.user },
+//     { text: req.body.text },
+//     { new: true }
+//   );
+//   res.json(todo);
+// };
+
+// export const deleteTodo = async (req, res) => {
+//   await Todo.findOneAndDelete({ _id: req.params.id, user: req.user });
+//   res.json({ message: "Deleted" });
+// };
+
+// for convet _id to id 
 export const getTodos = async (req, res) => {
   const todos = await Todo.find({ user: req.user });
-  res.json(todos);
+
+  res.json(todos.map(formatTodo));
 };
 
 export const addTodo = async (req, res) => {
@@ -41,7 +73,8 @@ export const addTodo = async (req, res) => {
     completed: false,
     user: req.user,
   });
-  res.json(todo);
+
+  res.json(formatTodo(todo));
 };
 
 export const updateTodo = async (req, res) => {
@@ -50,10 +83,17 @@ export const updateTodo = async (req, res) => {
     { text: req.body.text },
     { new: true }
   );
-  res.json(todo);
+
+  if (!todo) {
+    return res.status(404).json({ message: "Todo not found" });
+  }
+
+  res.json(formatTodo(todo));
 };
 
 export const deleteTodo = async (req, res) => {
+  console.log("Deleting todo with id:", req.params.id);
   await Todo.findOneAndDelete({ _id: req.params.id, user: req.user });
-  res.json({ message: "Deleted" });
+
+  res.json({ id: req.params.id });
 };

@@ -18,8 +18,10 @@ export const register = async (req, res) => {
 };
 
 export const login = async (req, res) => {
+  
+  console.log("client login request:", req.body);
   const { email, password } = req.body;
-
+  
   const user = await User.findOne({ email });
   if (!user || !(await bcrypt.compare(password, user.password))) {
     return res.status(401).json({ message: "Invalid credentials" });
