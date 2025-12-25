@@ -4,10 +4,10 @@ import axios from "axios";
  * Base API URL
  * Backend must be running on this URL
  */
-// const API_URL = "http://localhost:5000/api/todos";
+ const API_URL = "http://localhost:5000/api";
 
 // api for spring boot backend
-const API_URL = "http://localhost:8080/api";
+//const API_URL = "http://localhost:8080/api";
 
 /**
  * GET → Fetch all todos
@@ -38,5 +38,5 @@ export const updateTodoApi = (id, data) => {
  */
 export const deleteTodoApi = (id) => {
   // return axios.delete(`${API_URL}/${id}`);
-  return axios.delete(`${API_URL}/todo${id}`);
+  return axios.delete(`${API_URL}/todo/${id}`);
 };
