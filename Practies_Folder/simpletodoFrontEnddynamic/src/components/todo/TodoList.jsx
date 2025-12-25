@@ -17,7 +17,7 @@ export default function TodoList() {
   return (
     <ul>
       {list.map(todo => (
-        <TodoItem key={todo._id} todo={todo} />
+        <TodoItem key={todo.id} todo={todo} />
       ))}
     </ul>
   );

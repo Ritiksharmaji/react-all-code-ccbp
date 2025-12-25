@@ -55,12 +55,12 @@ const todoSlice = createSlice(
       })
 
       .addCase(updateTodo.fulfilled, (s, a) => {
-        const i = s.list.findIndex(t => t._id === a.payload._id);
+        const i = s.list.findIndex(t => t.id === a.payload.id);
         if (i !== -1) s.list[i] = a.payload;
       })
 
       .addCase(deleteTodo.fulfilled, (s, a) => {
-        s.list = s.list.filter(t => t._id !== a.payload);
+        s.list = s.list.filter(t => t.id !== a.payload);
       });
       
   }

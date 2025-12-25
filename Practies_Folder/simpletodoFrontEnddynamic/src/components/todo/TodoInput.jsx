@@ -17,7 +17,7 @@ export default function TodoInput() {
 
     if (editTodo) {
       dispatch(updateTodo({
-        id: editTodo._id,
+        id: editTodo.id,
         data: { text }
       }));
       setEditTodo(null);
