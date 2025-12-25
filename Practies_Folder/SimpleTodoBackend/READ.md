@@ -207,3 +207,154 @@ Since you already work with **MERN & backend (Node, MongoDB)**:
 * Express + Spring Boot comparison
 
 Tell me what you want next 👍
+You’re **very close**, but yes — there are **real bugs** in this code.
+Main issue: **you are sending multiple responses for a single request**, which will crash Express.
+
+Let’s fix it cleanly and explain **why**.
+
+---
+
+## ❌ What’s WRONG in your current code
+
+### 1️⃣ You are calling `res.json()` **TWICE**
+
+Example:
+
+```js
+res.status(201).json(todo);
+res.json(todo.map(formatTodo)); ❌
+```
+
+🚫 **You can only send ONE response per request**
+After the first `res.json`, the response is already sent.
+
+This will cause:
+
+```
+Error: Cannot set headers after they are sent
+```
+
+---
+
+### 2️⃣ `todo.map()` on a single object ❌
+
+```js
+const todo = await Todo.create(req.body);
+todo.map(formatTodo); ❌
+```
+
+`Todo.create()` returns **ONE object**, not an array.
+
+---
+
+### 3️⃣ Inconsistent response formatting
+
+Sometimes you return:
+
+* raw mongoose object
+* sometimes formatted object
+
+👉 API responses should be **consistent**
+
+---
+
+## ✅ FIXED & CORRECT VERSION (BEST PRACTICE)
+
+### 🔹 helper.js (correct)
+
+```js
+export const formatTodo = (todo) => ({
+  id: todo._id,
+  text: todo.text,
+  completed: todo.completed,
+  user: todo.user,
+});
+```
+
+---
+
+## ✅ Controller (FIXED)
+
+### ✅ CREATE
+
+```js
+export const createTodo = async (req, res) => {
+  const todo = await Todo.create(req.body);
+  res.status(201).json(formatTodo(todo));
+};
+```
+
+---
+
+### ✅ READ (ALL)
+
+```js
+export const getTodos = async (req, res) => {
+  const todos = await Todo.find();
+  res.json(todos.map(formatTodo));
+};
+```
+
+---
+
+### ✅ UPDATE
+
+```js
+export const updateTodo = async (req, res) => {
+  const updated = await Todo.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true }
+  );
+
+  if (!updated) {
+    return res.status(404).json({ message: "Todo not found" });
+  }
+
+  res.json(formatTodo(updated));
+};
+```
+
+---
+
+### ✅ DELETE
+
+```js
+export const deleteTodo = async (req, res) => {
+  const deleted = await Todo.findByIdAndDelete(req.params.id);
+
+  if (!deleted) {
+    return res.status(404).json({ message: "Todo not found" });
+  }
+
+  res.json({ id: req.params.id });
+};
+```
+
+---
+
+## 🧠 Why this is the RIGHT way
+
+✔ Single response per request
+✔ Consistent API format
+✔ Proper error handling
+✔ Frontend-friendly (`id` instead of `_id`)
+
+---
+
+## 🚀 Pro Tip (Industry Standard)
+
+In real projects:
+
+* Use `try/catch`
+* Use centralized error middleware
+* Use DTO-style responses (you already started 👍)
+
+If you want, I can:
+
+* Convert this to **TypeScript**
+* Add **JWT authentication**
+* Connect this with **React Redux**
+* Align this with your **Spring Boot Todo API**
+
+Just tell me what you want next 💪
