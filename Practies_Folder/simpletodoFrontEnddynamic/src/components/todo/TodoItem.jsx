@@ -11,7 +11,7 @@ export default function TodoItem({ todo }) {
       <span
         onClick={() =>
           dispatch(updateTodo({
-            id: todo._id,
+            id: todo.id,
             data: { completed: !todo.completed }
           }))
         }
@@ -23,7 +23,7 @@ export default function TodoItem({ todo }) {
       </span>
 
       <button onClick={() => setEditTodo(todo)}>✏️</button>
-      <button onClick={() => dispatch(deleteTodo(todo._id))}>❌</button>
+      <button onClick={() => dispatch(deleteTodo(todo.id))}>❌</button>
     </li>
   );
 }

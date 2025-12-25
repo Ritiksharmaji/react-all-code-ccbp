@@ -5,12 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from "react-redux";
 import { store } from './redux/store/store';
+import { TodoUIProvider } from './context/TodoUIContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
  <React.StrictMode>
     <Provider store={store}>
+    <TodoUIProvider>
       <App />
+    </TodoUIProvider>
     </Provider>
   </React.StrictMode>
 );

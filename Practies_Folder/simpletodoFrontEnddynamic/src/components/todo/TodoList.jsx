@@ -6,6 +6,7 @@ import TodoItem from "./TodoItem";
 export default function TodoList() {
   const dispatch = useDispatch();
   const { list, loading, error } = useSelector(s => s.todos);
+  console.log("TodoList render: ", list);
 
   useEffect(() => {
     dispatch(fetchTodos());
@@ -17,7 +18,7 @@ export default function TodoList() {
   return (
     <ul>
       {list.map(todo => (
-        <TodoItem key={todo._id} todo={todo} />
+        <TodoItem key={todo.id} todo={todo} />
       ))}
     </ul>
   );
