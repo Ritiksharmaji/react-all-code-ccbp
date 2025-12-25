@@ -14,9 +14,9 @@
 // export default App;
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Login from "./pages/LoginPage";
 import TodoPage from "./pages/TodoPage";
 import {login} from "./redux/slices/authSlice"
+import AuthPage from "./pages/AuthPage";
 const App = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
@@ -30,7 +30,7 @@ const App = () => {
     }
   }, [dispatch, user]);
 
-  return <>{user ? <TodoPage /> : <Login />}</>;
+  return <>{user ? <TodoPage /> : <AuthPage />}</>;
 };
 
 export default App;
